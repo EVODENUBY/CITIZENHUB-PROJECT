@@ -94,9 +94,77 @@ const formatDate = (dateString: string, formatStr: string = 'MMM dd, yyyy'): str
   }
 };
 
+const MOCK_ADMIN_COMPLAINTS = [
+  {
+    id: 'complaint-001',
+    userId: 'user-001',
+    userName: 'Evode nuby',
+    userEmail: 'evode@nuby.com',
+    title: ' Water Issue',
+    description: 'There is a mock water leakage in the street.',
+    category: 'Infrastructure',
+    priority: 'High',
+    location: 'Kigali, Rwanda',
+    contactInfo: '+250 700 000 001',
+    status: 'Pending',
+    adminNotes: '',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 24).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 24).toISOString(),
+  },
+  {
+    id: 'complaint-002',
+    userId: 'user-002',
+    userName: 'Jane',
+    userEmail: 'jane.Gasaro@jane.com',
+    title: ' Street Light',
+    description: ' street light not working.',
+    category: 'Utilities',
+    priority: 'Medium',
+    location: 'Kigali, Rwanda',
+    contactInfo: '++250 790 789 802',
+    status: 'In Progress',
+    adminNotes: 'Mock technician assigned.',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  },
+  {
+    id: 'complaint-003',
+    userId: 'user-002',
+    userName: 'Gasaro jane',
+    userEmail: 'Gasaro@gmail.com',
+    title: 'Disease outbreakt',
+    description: 'Malaria outbreak.',
+    category: 'healthy',
+    priority: 'high',
+    location: 'nyamagabe, Rwanda',
+    contactInfo: '+250 790 789 802',
+    status: 'Resolved',
+    adminNotes: 'technician assigned.',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  },
+  {
+    id: 'complaint-004',
+    userId: 'user-002',
+    userName: 'Mukunzi Emery',
+    userEmail: 'mukunzi@gmail.com',
+    title: ' Street Light',
+    description: ' street light not working.',
+    category: 'Utilities',
+    priority: 'Medium',
+    location: 'Kigali, Rwanda',
+    contactInfo: '+250 78 080 002',
+    status: 'In Progress',
+    adminNotes: ' technician assigned.',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  }
+];
+
 const ComplaintsTable: React.FC = () => {
   const { getAllComplaints, updateComplaintStatus, deleteComplaint } = useComplaints();
-  const allComplaints = getAllComplaints();
+  // For testing, combine mock data with real data (remove in production)
+  const allComplaints = [...MOCK_ADMIN_COMPLAINTS, ...getAllComplaints()];
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -814,4 +882,4 @@ const ComplaintsTable: React.FC = () => {
   );
 };
 
-export default ComplaintsTable; 
+export default ComplaintsTable;
