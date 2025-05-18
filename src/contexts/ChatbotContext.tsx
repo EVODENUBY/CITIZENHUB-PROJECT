@@ -38,7 +38,7 @@ const ChatbotContext = createContext<ChatbotContextType | undefined>(undefined);
 // Initialize OpenAI client
 const openai = new OpenAI({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY, // Use environment variable
-  dangerouslyAllowBrowser: true // Note: In production, you should use a backend service
+  dangerouslyAllowBrowser: true
 });
 
 export const ChatbotProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
