@@ -1,0 +1,15 @@
+{
+  "short_name": "CitizenKonect",
+  "name": "Citizen Konect - Citizen Complaints and Engagement System",
+  "icons": [
+    {
+      "src": "citizen-feedback.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+} 

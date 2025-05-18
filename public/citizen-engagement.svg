@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Background Circle -->
+        <circle fill="#E3F2FD" cx="400" cy="300" r="250"/>
+        
+        <!-- Buildings -->
+        <g transform="translate(250, 200)">
+            <rect fill="#1976D2" x="0" y="100" width="60" height="200"/>
+            <rect fill="#1565C0" x="70" y="50" width="60" height="250"/>
+            <rect fill="#0D47A1" x="140" y="150" width="60" height="150"/>
+            <rect fill="#1976D2" x="210" y="80" width="60" height="220"/>
+            <rect fill="#1565C0" x="280" y="120" width="60" height="180"/>
+        </g>
+        
+        <!-- People Icons -->
+        <g transform="translate(300, 250)">
+            <!-- Person 1 -->
+            <circle fill="#2196F3" cx="0" cy="0" r="20"/>
+            <path d="M-10,25 C-30,40 30,40 10,25" stroke="#2196F3" stroke-width="4"/>
+            
+            <!-- Person 2 -->
+            <circle fill="#1976D2" cx="50" cy="0" r="20"/>
+            <path d="M40,25 C20,40 80,40 60,25" stroke="#1976D2" stroke-width="4"/>
+            
+            <!-- Person 3 -->
+            <circle fill="#0D47A1" cx="100" cy="0" r="20"/>
+            <path d="M90,25 C70,40 130,40 110,25" stroke="#0D47A1" stroke-width="4"/>
+        </g>
+        
+        <!-- Connection Lines -->
+        <g stroke="#90CAF9" stroke-width="2" stroke-dasharray="5,5">
+            <path d="M300,250 C350,200 450,200 500,250"/>
+            <path d="M350,250 C400,200 500,200 550,250"/>
+            <path d="M400,250 C450,200 550,200 600,250"/>
+        </g>
+        
+        <!-- Speech Bubbles -->
+        <g fill="#BBDEFB">
+            <path d="M280,180 L300,200 L320,180 L320,150 L280,150 Z"/>
+            <path d="M480,180 L500,200 L520,180 L520,150 L480,150 Z"/>
+        </g>
+    </g>
+</svg> 
