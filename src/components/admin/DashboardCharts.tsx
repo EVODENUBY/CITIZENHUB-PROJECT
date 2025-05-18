@@ -36,9 +36,80 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
+const MOCK_ADMIN_COMPLAINTS = [
+  {
+    id: 'complaint-001',
+    userId: 'user-001',
+    userName: 'Evode nuby',
+    userEmail: 'evode@nuby.com',
+    title: 'Water Issue',
+    description: 'There is a mock water leakage in the street.',
+    category: 'Infrastructure',
+    priority: 'High',
+    location: 'Kigali, Rwanda',
+    contactInfo: '+250 700 000 001',
+    status: 'Pending',
+    adminNotes: '',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 24).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 24).toISOString(),
+  },
+  {
+    id: 'complaint-002',
+    userId: 'user-002',
+    userName: 'Jane',
+    userEmail: 'jane.Gasaro@jane.com',
+    title: 'Street Light',
+    description: 'Street light not working.',
+    category: 'Utilities',
+    priority: 'Medium',
+    location: 'Kigali, Rwanda',
+    contactInfo: '++250 790 789 802',
+    status: 'In Progress',
+    adminNotes: 'Mock technician assigned.',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  },
+  {
+    id: 'complaint-003',
+    userId: 'user-002',
+    userName: 'Gasaro jane',
+    userEmail: 'Gasaro@gmail.com',
+    title: 'Disease outbreak',
+    description: 'Malaria outbreak.',
+    category: 'Health',
+    priority: 'High',
+    location: 'Nyamagabe, Rwanda',
+    contactInfo: '+250 790 789 802',
+    status: 'Resolved',
+    adminNotes: 'Technician assigned.',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  },
+  {
+    id: 'complaint-004',
+    userId: 'user-002',
+    userName: 'Mukunzi Emery',
+    userEmail: 'mukunzi@gmail.com',
+    title: 'Street Light',
+    description: 'Street light not working.',
+    category: 'Utilities',
+    priority: 'Medium',
+    location: 'Kigali, Rwanda',
+    contactInfo: '+250 78 080 002',
+    status: 'In Progress',
+    adminNotes: 'Technician assigned.',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  }
+];
+
 const DashboardCharts: React.FC = () => {
   const { getAllComplaints } = useComplaints();
-  const allComplaints = getAllComplaints();
+  // Combine mock and real complaints for charts
+  const allComplaints = React.useMemo(
+    () => [...MOCK_ADMIN_COMPLAINTS, ...getAllComplaints()],
+    [getAllComplaints]
+  );
 
   // Prepare data for category chart
   const categoryData = React.useMemo(() => {
@@ -132,4 +203,4 @@ const DashboardCharts: React.FC = () => {
   );
 };
 
-export default DashboardCharts; 
+export default DashboardCharts;
