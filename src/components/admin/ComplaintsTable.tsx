@@ -74,13 +74,11 @@ interface DeleteDialogState {
 
 const formatDate = (dateString: string, formatStr: string = 'MMM dd, yyyy'): string => {
   try {
-    // First try parsing as ISO string
     const date = parseISO(dateString);
     if (isValid(date)) {
       return format(date, formatStr);
     }
-    
-    // If not ISO, try regular Date constructor
+      // If not ISO, try regular Date constructor
     const fallbackDate = new Date(dateString);
     if (isValid(fallbackDate)) {
       return format(fallbackDate, formatStr);
@@ -89,85 +87,152 @@ const formatDate = (dateString: string, formatStr: string = 'MMM dd, yyyy'): str
     // If both attempts fail, return a placeholder
     return 'Invalid date';
   } catch (error) {
-    console.error('Error formatting date:', error);
-    return 'Invalid date';
+    console.error('Error for formatting date:', error);
+    return 'Invalid date format';
   }
 };
 
 const MOCK_ADMIN_COMPLAINTS = [
   {
-    id: 'complaint-001',
+    id: 'C-001',
     userId: 'user-001',
-    userName: 'Evode nuby',
-    userEmail: 'evode@nuby.com',
-    title: ' Water Issue',
-    description: 'There is a mock water leakage in the street.',
+    userName: 'Evode MUYISINGIZE',
+    userEmail: 'evode@gmail.com',
+    title: ' Water Related Issues',
+    description: 'There is a massive  water leakage in the street. Please get ready to repair it',
     category: 'Infrastructure',
     priority: 'High',
-    location: 'Kigali, Rwanda',
-    contactInfo: '+250 700 000 001',
+    location: 'Remera, Rwanda',
+    contactInfo: '+250 729525550',
     status: 'Pending',
     adminNotes: '',
     createdAt: new Date(Date.now() - 3600 * 1000 * 24).toISOString(),
     updatedAt: new Date(Date.now() - 3600 * 1000 * 24).toISOString(),
   },
   {
-    id: 'complaint-002',
+    id: 'C-002',
     userId: 'user-002',
-    userName: 'Jane',
-    userEmail: 'jane.Gasaro@jane.com',
+    userName: 'Adolphe NAYITURIKI',
+    userEmail: 'adolphe@gmail.com',
     title: ' Street Light',
-    description: ' street light not working.',
+    description: ' street light isn\'t not working.',
     category: 'Utilities',
     priority: 'Medium',
-    location: 'Kigali, Rwanda',
-    contactInfo: '++250 790 789 802',
+    location: 'HUYE, Rwanda',
+    contactInfo: '+250 790 789 802',
     status: 'In Progress',
-    adminNotes: 'Mock technician assigned.',
+    adminNotes: '',
     createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
     updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
   },
   {
-    id: 'complaint-003',
+    id: 'C-003',
     userId: 'user-002',
-    userName: 'Gasaro jane',
-    userEmail: 'Gasaro@gmail.com',
+    userName: 'Bernard NDAGIJIMANA',
+    userEmail: 'bernard@gmail.com',
     title: 'Disease outbreakt',
     description: 'Malaria outbreak.',
-    category: 'healthy',
-    priority: 'high',
-    location: 'nyamagabe, Rwanda',
-    contactInfo: '+250 790 789 802',
-    status: 'Resolved',
-    adminNotes: 'technician assigned.',
+    category: 'HealthCare',
+    priority: 'High',
+    location: 'Nyamagabe, Rwanda',
+    contactInfo: '+250 727 709 702',
+    status: 'Pending',
+    adminNotes: '',
     createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
     updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
   },
   {
-    id: 'complaint-004',
+    id: 'C-004',
     userId: 'user-002',
-    userName: 'Mukunzi Emery',
-    userEmail: 'mukunzi@gmail.com',
-    title: ' Street Light',
-    description: ' street light not working.',
-    category: 'Utilities',
+    userName: 'Vedaste TUYISHIMIRE',
+    userEmail: 'vedaste@gmail.com',
+    title: ' Transport problems',
+    description: 'Shortage of Buses for passengers become a serious problem and\
+     barrier to peaple from HUYE-KIGALI',
+    category: 'infrastructure',
     priority: 'Medium',
     location: 'Kigali, Rwanda',
-    contactInfo: '+250 78 080 002',
-    status: 'In Progress',
-    adminNotes: ' technician assigned.',
+    contactInfo: '+250 722 787 902',
+    status: 'Pending',
+    adminNotes:'',
     createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
     updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
-  }
+  },
+  {
+    id: 'C-005',
+    userId: 'user-002',
+    userName: 'Jonathan DUKUNDIMANA',
+    userEmail: 'Jonathan@gmail.com',
+    title: ' LOW LIVING ALLOWANCES TO UNIVERSITY STUNTS',
+    description: 'Student Bursary is very low!!, Could you please increase it?',
+    category: 'EDUCATION',
+    priority: 'Medium',
+    location: 'HUYE, Rwanda',
+    contactInfo: '+250 734 089 002',
+    status: 'In Progress',
+    adminNotes:'',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  },
+  {
+    id: 'C-006',
+    userId: 'user-002',
+    userName: 'Patrick AMIZERO',
+    userEmail: 'patrick@gmail.com',
+    title: 'Hazardous Rainfall',
+    description: 'Due to Heavy rainfall received in our District GICUMBI, It is prone to Hazzadous effects.\
+                              REMA should visit Us to cope with That climate And provide us how e can overcome those catastrophes',
+    category: 'HealthCare',
+    priority: 'High',
+    location: 'Gicumbi, Rwanda',
+    contactInfo: '+250 730 000 002',
+    status: 'Pending',
+    adminNotes:'',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  },
+  {
+    id: 'C-007',
+    userId: 'user-002',
+    userName: 'Denyse CYUZUZO',
+    userEmail: 'Denyse@gmail.com',
+    title: ' ASKING ROAD PROVISION',
+    description: 'We need good feeder roads to connect Kayonza to the rest of the country!!',
+    category: 'infrastructure',
+    priority: 'Medium',
+    location: 'Kayonza, Rwanda',
+    contactInfo: '+250 777 000 002',
+    status: 'Resolved',
+    adminNotes:'',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  },
+  {
+    id: 'C-008',
+    userId: 'user-002',
+    userName: 'Feliste izere',
+    userEmail: 'felicite@gmail.com',
+    title: 'REQUEST',
+    description: 'We are asking for the government to provide electricity in NYARGURU if possible',
+    category: 'Others',
+    priority: 'Low',
+    location: 'Gisagara, Rwanda',
+    contactInfo: '+250 782 567 002',
+    status: 'In Progress',
+    adminNotes:'',
+    createdAt: new Date(Date.now() - 3600 * 1000 * 12).toISOString(),
+    updatedAt: new Date(Date.now() - 3600 * 1000 * 6).toISOString(),
+  },
 ];
 
 const ComplaintsTable: React.FC = () => {
   const { getAllComplaints, updateComplaintStatus, deleteComplaint } = useComplaints();
-  // For testing, combine mock data with real data (remove in production)
+
+  // For testing, combine TESTING data with real data (remove in production)
   const allComplaints = [...MOCK_ADMIN_COMPLAINTS, ...getAllComplaints()];
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState<FilterState>({
     status: [],
@@ -183,7 +248,7 @@ const ComplaintsTable: React.FC = () => {
     direction: 'desc' as 'asc' | 'desc'
   });
 
-  // Response dialog state
+  // RESPONSE ICON TO DELETE COMPLAINTS
   const [responseDialog, setResponseDialog] = useState<ResponseDialogState>({
     open: false,
     complaintId: '',
@@ -211,7 +276,7 @@ const ComplaintsTable: React.FC = () => {
     severity: 'success' as 'success' | 'error',
   });
 
-  // Get unique values for filters
+  // UNIQUE VALUES FOR FILTERS
   const categories = Array.from(new Set(allComplaints.map(c => c.category)));
   const priorities = Array.from(new Set(allComplaints.map(c => c.priority)));
   const statuses = Array.from(new Set(allComplaints.map(c => c.status)));
@@ -301,7 +366,7 @@ const ComplaintsTable: React.FC = () => {
     page * rowsPerPage + rowsPerPage
   );
 
-  // Handle opening the response dialog
+  // TO HANDLE OPENING THE RESPONSE DIALOG
   const handleOpenResponse = (complaint: any) => {
     setResponseDialog({
       open: true,
@@ -319,7 +384,7 @@ const ComplaintsTable: React.FC = () => {
     });
   };
 
-  // Handle closing the response dialog
+  // HANDLE CLOSSING RESPONSE DIALOG
   const handleCloseDialog = () => {
     setResponseDialog({
       open: false,
@@ -337,7 +402,7 @@ const ComplaintsTable: React.FC = () => {
     });
   };
 
-  // Handle submitting the response
+  // SUBMITTING RESPONSE TO USER
   const handleSubmitResponse = async () => {
     try {
       await updateComplaintStatus(
@@ -348,34 +413,10 @@ const ComplaintsTable: React.FC = () => {
       handleCloseDialog();
     } catch (error) {
       console.error('Error updating complaint:', error);
-      // You might want to show an error message to the user here
     }
   };
 
-  // Handle opening delete dialog
-  const handleOpenDelete = (complaint: any) => {
-    setDeleteDialog({
-      open: true,
-      complaintId: complaint.id,
-      complaintTitle: complaint.title,
-    });
-  };
-
-  // Handle closing delete dialog
-  const handleCloseDelete = () => {
-    setDeleteDialog({
-      open: false,
-      complaintId: '',
-      complaintTitle: '',
-    });
-  };
-
-  // Handle closing snackbar
-  const handleCloseSnackbar = () => {
-    setSnackbar(prev => ({ ...prev, open: false }));
-  };
-
-  // Handle delete confirmation
+  // HANDLE DELETE CONFIRMATION
   const handleConfirmDelete = async () => {
     try {
       await deleteComplaint(deleteDialog.complaintId);
@@ -389,23 +430,48 @@ const ComplaintsTable: React.FC = () => {
       console.error('Error deleting complaint:', error);
       setSnackbar({
         open: true,
-        message: 'Failed to delete complaint. Please try again.',
+        message: 'Failed to delete complaint. Please try again!!.',
         severity: 'error',
       });
     }
   };
 
+  // HANDLE DELETE COMPLAINT
+  const handleOpenDelete = (complaint: any) => {
+    setDeleteDialog({
+      open: true,
+      complaintId: complaint.id,
+      complaintTitle: complaint.title,
+    });
+  };
+
+  // HANDLE CLOSE DELETE DIALOG
+  const handleCloseDelete = () => {
+    setDeleteDialog({
+      open: false,
+      complaintId: '',
+      complaintTitle: '',
+    });
+  };
+
+  // HANDLE CLOSE SNACKBAR
+  const handleCloseSnackbar = () => {
+    setSnackbar(prev => ({ ...prev, open: false }));
+  };
+
+  //INTERFACE
+
   return (
     <Paper sx={{ p: 2, mb: 4 }}>
       <Typography variant="h6" gutterBottom>
-        Complaints Management
+        Complaints Management System
       </Typography>
 
       <Stack spacing={2} sx={{ mb: 3 }}>
-        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
           <TextField
             size="small"
-            placeholder="Search complaints..."
+            placeholder="Search complaints Here "
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             sx={{ flexGrow: 1, minWidth: 200 }}
@@ -433,8 +499,8 @@ const ComplaintsTable: React.FC = () => {
           </Button>
         </Box>
 
-        <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center' }}>
-          {/* Date Range Filters */}
+        <Box sx={{ display: 'flex', gap: 1.8, flexWrap: 'wrap', alignItems: 'center' }}>
+          {/* DATE FILTER*/}
           <TextField
             type="date"
             size="small"
@@ -448,6 +514,7 @@ const ComplaintsTable: React.FC = () => {
               }
             }))}
             InputLabelProps={{ shrink: true }}
+            title='Select start date'
             sx={{ minWidth: 170 }}
           />
           <TextField
@@ -463,6 +530,7 @@ const ComplaintsTable: React.FC = () => {
               }
             }))}
             InputLabelProps={{ shrink: true }}
+            title='Select End date'
             sx={{ minWidth: 170 }}
           />
 
@@ -562,7 +630,7 @@ const ComplaintsTable: React.FC = () => {
                   direction={sortConfig.key === 'id' ? sortConfig.direction : 'asc'}
                   onClick={() => handleSort('id')}
                 >
-                  ID
+                  Comp ID
                 </TableSortLabel>
               </TableCell>
               <TableCell>
@@ -571,7 +639,7 @@ const ComplaintsTable: React.FC = () => {
                   direction={sortConfig.key === 'title' ? sortConfig.direction : 'asc'}
                   onClick={() => handleSort('title')}
                 >
-                  Title
+                 Comp Title
                 </TableSortLabel>
               </TableCell>
               <TableCell>
@@ -580,7 +648,7 @@ const ComplaintsTable: React.FC = () => {
                   direction={sortConfig.key === 'userName' ? sortConfig.direction : 'asc'}
                   onClick={() => handleSort('userName')}
                 >
-                  Name
+                Citizen Name
                 </TableSortLabel>
               </TableCell>
               <TableCell>
@@ -589,7 +657,7 @@ const ComplaintsTable: React.FC = () => {
                   direction={sortConfig.key === 'userEmail' ? sortConfig.direction : 'asc'}
                   onClick={() => handleSort('userEmail')}
                 >
-                  Email
+                  Citizen Email
                 </TableSortLabel>
               </TableCell>
               <TableCell>
@@ -598,7 +666,7 @@ const ComplaintsTable: React.FC = () => {
                   direction={sortConfig.key === 'category' ? sortConfig.direction : 'asc'}
                   onClick={() => handleSort('category')}
                 >
-                  Category
+                  Comp Category
                 </TableSortLabel>
               </TableCell>
               <TableCell>
@@ -607,7 +675,7 @@ const ComplaintsTable: React.FC = () => {
                   direction={sortConfig.key === 'status' ? sortConfig.direction : 'asc'}
                   onClick={() => handleSort('status')}
                 >
-                  Status
+                 Comp Status
                 </TableSortLabel>
               </TableCell>
               <TableCell>
@@ -662,6 +730,7 @@ const ComplaintsTable: React.FC = () => {
                       size="small"
                       startIcon={<ReplyIcon />}
                       onClick={() => handleOpenResponse(complaint)}
+                      title="Respond UserComplaint"
                     >
                       Respond
                     </Button>
@@ -682,7 +751,7 @@ const ComplaintsTable: React.FC = () => {
       </TableContainer>
 
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25, 50]}
+        rowsPerPageOptions={[5, 10, 25, 50, 100]}
         component="div"
         count={filteredComplaints.length}
         rowsPerPage={rowsPerPage}
@@ -694,7 +763,7 @@ const ComplaintsTable: React.FC = () => {
         }}
       />
 
-      {/* Response Dialog */}
+      {/* RESPONSE DIALOG */}
       <Dialog 
         open={responseDialog.open} 
         onClose={handleCloseDialog}
@@ -702,12 +771,12 @@ const ComplaintsTable: React.FC = () => {
         fullWidth
       >
         <DialogTitle sx={{ pb: 1 }}>
-          Respond to Complaint
+          Respond to Citizen's compliant
         </DialogTitle>
         <DialogContent>
-          <Box sx={{ mb: 3, mt: 2 }}>
-            {/* Complaint Details Section */}
-            <Paper variant="outlined" sx={{ p: 2, mb: 3 }}>
+          <Box sx={{ mb: 3, mt: 1 }}>
+            {/* COMPLIANT DETAILS */}
+            <Paper variant="outlined" sx={{ p: 2, mb: 1 }}>
               <Typography variant="h6" gutterBottom color="primary">
                 Complaint Details
               </Typography>
@@ -747,15 +816,15 @@ const ComplaintsTable: React.FC = () => {
               </Grid>
             </Paper>
 
-            {/* User Information Section */}
+            {/* USER INFORMATION */}
             <Paper variant="outlined" sx={{ p: 2, mb: 3 }}>
               <Typography variant="h6" gutterBottom color="primary">
-                User Information
+                Citizen Information
               </Typography>
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <Typography variant="subtitle1" fontWeight="bold">
-                    Name:
+                    Names:
                   </Typography>
                   <Typography variant="body1">
                     {responseDialog.userName}
@@ -771,7 +840,7 @@ const ComplaintsTable: React.FC = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <Typography variant="subtitle1" fontWeight="bold">
-                    Contact Info:
+                    Contacts:
                   </Typography>
                   <Typography variant="body1">
                     {responseDialog.contactInfo}
@@ -788,7 +857,7 @@ const ComplaintsTable: React.FC = () => {
               </Grid>
             </Paper>
 
-            {/* Response Section */}
+            {/* EVODE RESPONSES  */}
             <Paper variant="outlined" sx={{ p: 2 }}>
               <Typography variant="h6" gutterBottom color="primary">
                 Admin Response
@@ -811,15 +880,17 @@ const ComplaintsTable: React.FC = () => {
               <TextField
                 fullWidth
                 multiline
-                rows={4}
-                label="Admin Notes"
+                rows={3}
+                label="Admin Response or Notes"
+                variant="outlined"
                 value={responseDialog.adminNotes}
                 onChange={(e) => setResponseDialog(prev => ({
                   ...prev,
                   adminNotes: e.target.value
                 }))}
                 placeholder="Enter your response or notes about this complaint..."
-                helperText="This message will be visible to the user"
+                helperText="SUBMIT THIS RESPONSE TO THE CITIZEN"
+                
               />
             </Paper>
           </Box>
@@ -837,7 +908,7 @@ const ComplaintsTable: React.FC = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Delete Confirmation Dialog */}
+      {/* DELETE DIALOG */}
       <Dialog
         open={deleteDialog.open}
         onClose={handleCloseDelete}
@@ -847,7 +918,7 @@ const ComplaintsTable: React.FC = () => {
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete the complaint "{deleteDialog.complaintTitle}"? This action cannot be undone.
+           Are you sure you want to delete the complaint "{deleteDialog.complaintTitle}"? This action cannot be undone.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -862,10 +933,10 @@ const ComplaintsTable: React.FC = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Notification Snackbar */}
+      {/* NOTIFICATION SNACKBAR */}
       <Snackbar
         open={snackbar.open}
-        autoHideDuration={4000}
+        autoHideDuration={5000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >

@@ -39,7 +39,7 @@ const TrackComplaint: React.FC = () => {
       return;
     }
 
-    // Verify that the user owns this complaint or is an admin
+    //VERIFY IF USER OWNS THE COMPLAINT, OR IS ADMIN
     if (!user?.isAdmin && complaint.userId !== user?.id) {
       setError('You do not have permission to view this complaint.');
       return;

@@ -38,7 +38,7 @@ const Login: React.FC = () => {
 
     try {
       await login({ email, password });
-      // Navigate to the page they tried to visit or default to dashboard
+      // NAVIGATE TO THE PREVIOUS PAGE OR DASHBOARD
       navigate(from, { replace: true });
     } catch (error) {
       setError('Failed to sign in. Please check your credentials.');

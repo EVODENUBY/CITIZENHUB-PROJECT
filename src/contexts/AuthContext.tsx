@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { User, LoginCredentials, RegisterData, AuthContextType } from '../types/auth';
 
-// Mock admin user for demonstration
+// DEFAULT ADMIN CREDENTIALS FOR TESTING
 const ADMIN_EMAIL ="evode.citizenhub@gmail.com";
-const ADMIN_PASSWORD = 'evode';
+const ADMIN_PASSWORD = 'evode@123';
 
 const mockUsers: User[] = [
   {
@@ -37,7 +37,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [users, setUsers] = useState<User[]>(mockUsers);
   const [announcements, setAnnouncements] = useState<any[]>([]);
 
-  // Check session expiry periodically
+  // CHECK SESSION
   useEffect(() => {
     const checkSession = () => {
       const sessionExpiry = localStorage.getItem('sessionExpiry');
@@ -53,7 +53,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = useCallback(async (credentials: LoginCredentials) => {
-    // Simulate API call delay
+    // API CALL DELAY
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     const foundUser = users.find(u => u.email === credentials.email);
@@ -62,33 +62,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       throw new Error('User not found in the system');
     }
 
-    // Check if it's admin login
+    // CHECK ADMIN LOGIN
     if (credentials.email === ADMIN_EMAIL) {
       if (credentials.password !== ADMIN_PASSWORD) {
-        throw new Error('Invalid admin password');
+        throw new Error('Invalid Admin Password');
       }
     } else {
-      // For regular users, you would typically hash and compare passwords
+      // CHECK PASSWORDS OTHER CITIZENS
       if (credentials.password !== credentials.password) {
-        throw new Error('Invalid password');
+        throw new Error('Invalid Password, Try Again');
       }
     }
 
-    // Set session expiry to 24 hours from now
-    const expiryTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+    // SET SESSION EXPIRY TO 20 MINUTES
+    const expiryTime = new Date().getTime() + (20 * 60 * 1000);
     localStorage.setItem('sessionExpiry', expiryTime.toString());
     localStorage.setItem('user', JSON.stringify(foundUser));
     setUser(foundUser);
 
-    // Return isAdmin flag for redirect purposes
+    // RETURN ADMIN STATUS
     return foundUser.isAdmin;
   }, [users]);
 
   const register = useCallback(async (data: RegisterData) => {
-    // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    // Check if user already exists
+    // CHECK IF USER
     if (users.some(u => u.email === data.email)) {
       throw new Error('Email already registered');
     }
@@ -105,18 +104,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     setUsers(prev => [...prev, newUser]);
     
-    // Set session expiry to 24 hours from now
-    const expiryTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+    // / SET SESSION EXPIRY TO 20 MINUTES
+    const expiryTime = new Date().getTime() + (20* 60 * 1000);
     localStorage.setItem('sessionExpiry', expiryTime.toString());
     localStorage.setItem('user', JSON.stringify(newUser));
     setUser(newUser);
 
-    return false; // New users are never admin
+    return false;
   }, [users]);
 
   const addAnnouncement = useCallback((announcement: any) => {
     setAnnouncements(prev => [announcement, ...prev]);
-    // Store announcements in localStorage
+    // STORE ANNOUNCEMENTS
     localStorage.setItem('announcements', JSON.stringify([announcement, ...announcements]));
   }, [announcements]);
 
@@ -139,7 +138,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       ...data,
     };
 
-    // Update in users array
+    // UPDATE USER IN LOCAL STORAGE
     setUsers(prev => prev.map(u => 
       u.id === user.id ? updatedUser : u
     ));

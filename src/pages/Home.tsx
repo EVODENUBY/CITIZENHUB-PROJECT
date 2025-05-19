@@ -158,7 +158,7 @@ const Home: React.FC = () => {
         </Container>
       </Box>
 
-      {/* Features Section */}
+      {/* FFEATURES SECTION*/}
       <Box ref={featuresRef} sx={{ py: 8, scrollMarginTop: '64px' }}>
         <Container maxWidth="lg">
           <Typography

@@ -67,7 +67,6 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           case 'COMPLAINT_ADDED':
           case 'COMPLAINT_UPDATED':
           case 'COMPLAINT_DELETED':
-            // Dispatch custom event for ComplaintContext to handle
             window.dispatchEvent(new CustomEvent('websocket-complaint-update', { detail: data }));
             break;
           default:

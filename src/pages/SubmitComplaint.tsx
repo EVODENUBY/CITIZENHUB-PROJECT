@@ -54,7 +54,7 @@ const SubmitComplaint: React.FC = () => {
     category: '',
     location: '',
     contactInfo: '',
-    priority: 'Medium', // Default priority
+    priority: 'Medium', // DEFAULT VALUE
   });
 
   const [successDialog, setSuccessDialog] = useState({
@@ -89,7 +89,7 @@ const SubmitComplaint: React.FC = () => {
     e.preventDefault();
     try {
       const result = await addComplaint(formData);
-      // Note: addComplaint should be modified to return the new complaint object
+      
       setSuccessDialog({
         open: true,
         complaintId: result.id,
@@ -209,7 +209,7 @@ const SubmitComplaint: React.FC = () => {
         </Paper>
       </Box>
 
-      {/* Success Dialog */}
+      {/* SUCCESS DIALOG */}
       <Dialog
         open={successDialog.open}
         onClose={handleCloseDialog}

@@ -19,7 +19,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, requireAdmin 
   const location = useLocation();
 
   if (!isAuthenticated) {
-    // Redirect to home while saving the attempted location
+    // REDIRECTS TO HOME PAGE IF NOT AUTHENTICATED
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 
@@ -44,10 +44,10 @@ const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
-      {/* Public routes */}
+      {/* PUBLIC */}
       <Route path="/" element={<PublicRoute><Home /></PublicRoute>} />
 
-      {/* Protected routes */}
+      {/*PROTECTED ROUTES */}
       <Route
         path="/dashboard"
         element={

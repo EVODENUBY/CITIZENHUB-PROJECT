@@ -152,7 +152,7 @@ const AnnouncementManager: React.FC = () => {
         ))}
       </List>
 
-      {/* New Announcement Dialog */}
+      {/* NEW ANNOUNCEMENT */}
       <Dialog open={isDialogOpen} onClose={handleCloseDialog} maxWidth="sm" fullWidth>
         <form onSubmit={handleSubmit}>
           <DialogTitle>New Announcement</DialogTitle>

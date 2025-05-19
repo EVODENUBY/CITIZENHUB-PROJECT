@@ -91,7 +91,7 @@ const AdminDashboard: React.FC = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Snackbar for notifications */}
+      {/* NOTIFICATION SNACKBAR */}
       <Snackbar
         open={snackbar.open}
         autoHideDuration={6000}

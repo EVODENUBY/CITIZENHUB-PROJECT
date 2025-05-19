@@ -15,6 +15,7 @@ import {
   LinkedIn as LinkedInIcon,
   Twitter as TwitterIcon,
   Language as WebIcon,
+  YouTube as YouTubeIcon,
   AccessTime as ClockIcon,
 } from '@mui/icons-material';
 
@@ -53,7 +54,7 @@ const Footer: React.FC = () => {
                 CitizenHub
               </Typography>
               <Typography variant="body2" sx={{ mb: 2 }}>
-                Empowering citizens through efficient communication
+                 Empowering citizens through efficient communication
               </Typography>
               <Box sx={{ 
                 display: 'flex', 
@@ -91,7 +92,7 @@ const Footer: React.FC = () => {
                 }
               }}>
                 <IconButton
-                  href="https://github.com/@"
+                  href="https://github.com/@EVODENUBY"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{ color: 'white' }}
@@ -107,12 +108,12 @@ const Footer: React.FC = () => {
                   <LinkedInIcon />
                 </IconButton>
                 <IconButton
-                  href="https://url-shortener.me/PLN"
+                  href="https://www.youtube.com/@EVODENUBY"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{ color: 'white' }}
                 >
-                  <LinkedInIcon />
+                  <YouTubeIcon />
                 </IconButton>
                 <IconButton
                   href="https://twitter.com/@evodeSTACK"
@@ -143,7 +144,26 @@ const Footer: React.FC = () => {
               gap: 1
             }}>
               <Typography variant="h6" gutterBottom>
-                Created by EVODENUBY
+                Developed by EVODENUBY
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                <Link rel="stylesheet" href="mailto:evodenuby@gmail.com" 
+                target="_blank"
+                sx={{ 
+                  color: 'white', 
+                  textDecoration: 'none',
+                  transition: 'all 0.2s',
+                  '&:hover': {
+                    textDecoration: 'none',
+                    transform: 'scale(1.05)',
+                    textShadow: '0 0 8px rgba(255,255,255,0.5)'
+                  }
+                }}
+                > 
+              evodenuby@gmail.com
+                </Link>
+                
+                 +250 791 3308
               </Typography>
               <Link
                 href="https://evodenuby.vercel.app"
@@ -162,6 +182,7 @@ const Footer: React.FC = () => {
               >
                 Visit My Portfolio
               </Link>
+              
               <Typography variant="body2" sx={{ mt: 1, opacity: 0.8 }}>
                 © {new Date().getFullYear()} All rights reserved
               </Typography>

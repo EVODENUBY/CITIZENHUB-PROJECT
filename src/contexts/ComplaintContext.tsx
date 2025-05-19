@@ -40,7 +40,7 @@ export const ComplaintProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
   }, []);
 
-  // Listen for WebSocket updates
+
   useEffect(() => {
     const handleWebSocketUpdate = (event: CustomEvent) => {
       const { type, payload } = event.detail;
@@ -94,32 +94,39 @@ export const ComplaintProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       ...complaintData,
     };
 
-    // Send WebSocket message
+    // UPDATE LOCAL STORAGE IF COMPLAINTS ADDED
+    setComplaints(prev => {
+      const updated = [newComplaint, ...prev];
+      saveComplaints(updated);
+      return updated;
+    });
+
     sendMessage({
       type: 'COMPLAINT_ADDED',
       payload: newComplaint
     });
 
     return newComplaint;
-  }, [user, sendMessage]);
+  }, [user, sendMessage, saveComplaints]);
 
-  const updateComplaintStatus = useCallback(async (complaintId: string, status: 'Pending' | 'In Progress' | 'Resolved', adminNotes?: string) => {
-    const complaint = complaints.find(c => c.id === complaintId);
-    if (!complaint) throw new Error('Complaint not found');
-
-    const updatedComplaint = {
-      ...complaint,
-      status,
-      adminNotes: adminNotes || complaint.adminNotes,
-      updatedAt: new Date().toISOString()
-    };
-
-    // Send WebSocket message
-    sendMessage({
-      type: 'COMPLAINT_UPDATED',
-      payload: updatedComplaint
-    });
-  }, [complaints, sendMessage]);
+  const updateComplaintStatus = useCallback(
+    async (complaintId: string, status: 'Pending' | 'In Progress' | 'Resolved', adminNotes?: string) => {
+      setComplaints(prev => {
+        const updated = prev.map(c =>
+          c.id === complaintId
+            ? { ...c, status, adminNotes: adminNotes ?? c.adminNotes, updatedAt: new Date().toISOString() }
+            : c
+        );
+        saveComplaints(updated);
+        return updated;
+      });
+      sendMessage({
+        type: 'COMPLAINT_UPDATED',
+        payload: { id: complaintId, status, adminNotes }
+      });
+    },
+    [sendMessage, saveComplaints]
+  );
 
   const deleteComplaint = useCallback(async (complaintId: string) => {
     // Update local state
@@ -182,4 +189,4 @@ export const useComplaints = () => {
     throw new Error('useComplaints must be used within a ComplaintProvider');
   }
   return context;
-}; 
+};

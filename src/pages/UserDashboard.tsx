@@ -40,42 +40,42 @@ import { useAnnouncements } from '../contexts/AnnouncementContext';
 import { format } from 'date-fns';
 import Chatbot from '../components/user/Chatbot';
 
-// Mock announcements - This should be replaced with real data from a context/API
+// TEST ANNOUNCEMENT ON USER DASHBOARD (TO BE UPDATED WITH REAL TIME FROM ADMIN)
 const announcements = [
   {
     id: 1,
     title: 'System Maintenance',
-    message: 'Scheduled maintenance on Sunday, 24th March 2024',
-    date: '2025-03-20',
+    message: 'Scheduled maintenance on Sunday, 24th JUNE 2025',
+    date: '2025-05-19',
   },
   {
     id: 2,
     title: 'New Feature Release',
-    message: 'Track your complaints in real-time with our new mobile app',
-    date: '2024-03-18',
+    message: 'Track your complaints in real-time!',
+    date: '2025-05-18',
   },
 ];
 
-// Testimonials data
+// TESTIMONIALS
 const testimonials = [
   {
     id: 1,
     name: "Evode MUYISINGIZE",
-    role: "Local Resident",
-    comment: "CitizenHub has made it so much easier to report issues in our community. The response time is impressive!",
+    role: "Software Engineer | Community Member",
+    comment: "CitizenHub has made it so much easier to report issues in our community. The response time is Best!",
     avatar: "/images/testimonials/person1.jpg"
   },
   {
     id: 2,
     name: "Adolphe NAYITURIKI",
-    role: "Business Owner",
-    comment: "As a business owner, I appreciate how efficiently the platform handles our concerns. Great communication system!",
+    role: "Student |Software Engineer",
+    comment: "As a Student of UR, I appreciate how efficiently the platform handles our concerns. Great communication system!",
     avatar: "/images/testimonials/person2.jpg"
   },
   {
     id: 3,
     name: "Evode sano",
-    role: "Community Leader",
+    role: "Local Citizen",
     comment: "This platform has transformed how we interact with local authorities. It's user-friendly and effective.",
     avatar: "/images/testimonials/person3.jpg"
   }
@@ -135,7 +135,7 @@ const UserDashboard: React.FC = () => {
   const userComplaints = getUserComplaints();
   const activeAnnouncements = getActiveAnnouncements();
 
-  // Monitor complaints for status changes
+  // TO MONITOR THE STATUS OF THE LAST COMPLAINT
   useEffect(() => {
     const lastComplaint = userComplaints[0];
     if (lastComplaint && lastComplaint.id !== statusAlert.complaintId) {
@@ -148,21 +148,21 @@ const UserDashboard: React.FC = () => {
         complaintId: lastComplaint.id
       });
 
-      // Automatically close the alert after 2 seconds
+      // TO CLOSE ALERT AFTER 3 SECONDS
       const timer = setTimeout(() => {
         setStatusAlert(prev => ({ ...prev, open: false }));
-      }, 2000);
+      }, 3000);
 
       return () => clearTimeout(timer);
     }
   }, [userComplaints, statusAlert.complaintId]);
 
-  // Handle closing the alert
+  // HANDLE CLOSING ALERT
   const handleCloseAlert = () => {
     setStatusAlert(prev => ({ ...prev, open: false }));
   };
 
-  // Debug log to check user data
+  // TO CHECK USER DATA
   useEffect(() => {
     console.log('User data:', user);
     console.log('Complaints:', userComplaints);
@@ -213,10 +213,10 @@ const UserDashboard: React.FC = () => {
   const handleRefresh = async () => {
     setIsRefreshing(true);
     refreshComplaints();
-    setTimeout(() => setIsRefreshing(false), 1000); // Show refresh animation for 1 second
+    setTimeout(() => setIsRefreshing(false), 1000); // ANIMATE REFRESH 1 SECONDS
   };
 
-  // Auto-refresh every 5 seconds
+  // AUTO REFRESH COMPLAINTS EVERY 5 SECONDS
   useEffect(() => {
     const interval = setInterval(() => {
       refreshComplaints();
@@ -225,7 +225,7 @@ const UserDashboard: React.FC = () => {
     return () => clearInterval(interval);
   }, [refreshComplaints]);
 
-  // If no user data, show loading or error state
+  // IF NO USER DATA, SHOW LOADING
   if (!user) {
     return (
       <Box sx={{ p: 4, textAlign: 'center' }}>
@@ -239,7 +239,7 @@ const UserDashboard: React.FC = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: '#f5f5f5' }}>
       <Container maxWidth="lg" sx={{ flex: 1, py: 4 }}>
-        {/* Welcome Section */}
+        {/* WELCOME */}
         <Paper 
           elevation={2}
           sx={{ 
@@ -275,7 +275,7 @@ const UserDashboard: React.FC = () => {
                 textAlign: { xs: 'center', md: 'left' }
               }}
             >
-              Welcome back, {user.firstName} {user.lastName}!
+              Welcome , {user.firstName} {user.lastName}!
             </Typography>
 
             <Grid container spacing={2}>
@@ -314,7 +314,7 @@ const UserDashboard: React.FC = () => {
                     Account Type
                   </Typography>
                   <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                    {user.isAdmin ? 'Administrator' : 'Citizen'}
+                    {user.isAdmin ? 'Admin Account' : 'Citizen'}
                   </Typography>
                 </Paper>
               </Grid>
@@ -342,7 +342,7 @@ const UserDashboard: React.FC = () => {
           </Box>
         </Paper>
 
-        {/* Quick Actions */}
+        {/* QUICK ACTIONS */}
         <Grid container spacing={2} sx={{ mb: 4 }}>
           <Grid item xs={12} md={4}>
             <Button
@@ -382,7 +382,7 @@ const UserDashboard: React.FC = () => {
           </Grid>
         </Grid>
 
-        {/* Statistics */}
+        {/* STATISTICS CARDS */}
         <Grid container spacing={3} sx={{ mb: 4 }}>
           <Grid item xs={12} sm={6} md={3}>
             <StatCard
@@ -418,13 +418,13 @@ const UserDashboard: React.FC = () => {
           </Grid>
         </Grid>
 
-        {/* Announcements Section - if there are active announcements */}
+        {/* ANNOUNCEMENT SECTION, IF EXISTS */}
         {activeAnnouncements.length > 0 && (
           <Paper elevation={2} sx={{ p: 3, mb: 4, borderRadius: 2 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
               <NotificationIcon sx={{ mr: 1, color: 'primary.main' }} />
               <Typography variant="h6" component="h2">
-                Important Announcements
+                Latest Announcements
               </Typography>
             </Box>
             <List>
@@ -478,7 +478,7 @@ const UserDashboard: React.FC = () => {
           </Paper>
         )}
 
-        {/* Recent Complaints Section */}
+        {/* RECENT COMPLAINTS */}
         <Grid container spacing={4} sx={{ mb: 4 }}>
           <Grid item xs={12}>
             <Paper sx={{ p: 3 }}>
@@ -544,7 +544,7 @@ const UserDashboard: React.FC = () => {
           </Grid>
         </Grid>
 
-        {/* Testimonials Section */}
+        {/* TESTIMONIALS*/}
         <Box sx={{ mt: 6 }}>
           <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4 }}>
             What Citizens Say
@@ -560,8 +560,8 @@ const UserDashboard: React.FC = () => {
                     flexDirection: 'column',
                     position: 'relative',
                     '&:hover': {
-                      transform: 'translateY(-4px)',
-                      boxShadow: 4,
+                      transform: 'translateY(-5px)',
+                      boxShadow: 5,
                     },
                     transition: 'transform 0.2s, box-shadow 0.2s',
                   }}
@@ -613,13 +613,13 @@ const UserDashboard: React.FC = () => {
         </Box>
       </Container>
 
-      {/* Status Update Alert */}
+      {/* STATUS UPDATE*/}
       <Snackbar
         open={statusAlert.open}
         autoHideDuration={2000}
         onClose={handleCloseAlert}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        sx={{ mt: 6 }} // Add some top margin to avoid overlap with AppBar
+        sx={{ mt: 6 }} // TOP MARGIN
       >
         <Alert 
           onClose={handleCloseAlert}

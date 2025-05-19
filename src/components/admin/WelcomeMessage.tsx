@@ -8,7 +8,7 @@ const WelcomeMessage: React.FC = () => {
   const { getAllComplaints } = useComplaints();
   const allComplaints = getAllComplaints();
 
-  // Get current time of day
+  // CURRENT TIME OF THE DAY
   const getTimeOfDay = () => {
     const hour = new Date().getHours();
     if (hour < 12) return 'Good morning';
@@ -16,7 +16,7 @@ const WelcomeMessage: React.FC = () => {
     return 'Good evening';
   };
 
-  // Get current date
+  // GET CURRENT DATE
   const getCurrentDate = () => {
     return new Date().toLocaleDateString('en-US', {
       weekday: 'long',
@@ -32,7 +32,7 @@ const WelcomeMessage: React.FC = () => {
       sx={{ 
         p: 3, 
         mb: 4, 
-        background: 'linear-gradient(135deg, #1976d2 0%, #1565c0 100%)',
+        background: 'linear-gradient(135deg, #1976d2 0%,rgb(16, 72, 135) 100%)',
         color: 'white',
         borderRadius: 2,
       }}
