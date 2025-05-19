@@ -1,16 +1,23 @@
 # Citizen Konect - Citizen Complaints and Engagement System
 
-A modern web application that enables citizens to submit and track complaints about public services while allowing government agencies to manage and respond to these complaints efficiently.
+This is  web application that enables citizens to submit and track complaints about public services while allowing government agencies to manage and respond to these complaints efficiently.
 
-## Features
 
-- Submit complaints with categorization
-- Track complaint status and updates
-- Admin dashboard for complaint management
-- Real-time status updates
-- Responsive design for mobile and desktop
+## DEMO ACCOUNT TO TEST
+     ##ADMIN LOGIN:   E-mail: evode.citizenhub@gmail.com
+                    PassWord: evode@123
 
-## Tech Stack
+    ## CITIZEN LOGIN: Go to Create Account After that , you will be redirected to citizen Dashboard.
+
+## FEATURES
+
+1. Submit complaints with categorization
+2. Track complaint status and updates
+3. Admin dashboard for complaint management
+4. Real-time status updates And Announcements
+5. Responsive design for mobile and desktop
+
+## TECH STACK USED
 
 - React with TypeScript
 - Material-UI for components
@@ -20,6 +27,8 @@ A modern web application that enables citizens to submit and track complaints ab
 
 - Node.js (v14 or higher)
 - npm (v6 or higher)
+
+
 
 ## Getting Started
 
@@ -46,29 +55,21 @@ The application will be available at `http://localhost:3000`.
 ```
 citizen-konect/
 ├── src/
-│   ├── components/     # Reusable UI components
-│   ├── pages/         # Page components
-│   ├── App.tsx        # Main application component
-│   └── index.tsx      # Application entry point
-├── public/            # Static files
-└── package.json       # Project dependencies and scripts
+│   ├── components/ 
+│   ├── pages/        
+│   ├── App.tsx        
+│   └── index.tsx     
+├── public/            
+└── package.json      
 ```
 
-## Available Scripts
+## SCRIPTS
 
 - `npm start` - Runs the app in development mode
 - `npm test` - Launches the test runner
 - `npm run build` - Builds the app for production
 - `npm run eject` - Ejects from Create React App
 
-## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
+## FOR PRODUCTION :BACKEND FOR THIS PROJECT To be updated In coming Days
+ 
