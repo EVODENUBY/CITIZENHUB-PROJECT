@@ -1,4 +1,4 @@
-# Citizen Konect - Citizen Complaints and Engagement System
+# CitizenHub - Citizen Complaints and Engagement System  (MVP)
 
 This is  web application that enables citizens to submit and track complaints about public services while allowing government agencies to manage and respond to these complaints efficiently.
 
