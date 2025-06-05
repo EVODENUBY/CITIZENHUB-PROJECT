@@ -1,6 +1,6 @@
 # Citizen Konect - Citizen Complaints and Engagement System
 
-This is  web application that enables citizens to submit and track complaints about public services while allowing government agencies to manage and respond to these complaints efficiently.
+This is  web application that enables citizens to submit and track complaints about public services while allowing government agencies to manage and respond to these complaints efficiently. 
 
 
 ## DEMO ACCOUNT TO TEST

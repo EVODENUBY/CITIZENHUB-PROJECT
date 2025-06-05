@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
                 CitizenHub
               </Typography>
               <Typography variant="body2" sx={{ mb: 2 }}>
-                 Empowering citizens through efficient communication
+                 Empowering citizens through efficient communication system
               </Typography>
               <Box sx={{ 
                 display: 'flex', 
@@ -63,7 +63,12 @@ const Footer: React.FC = () => {
                 gap: 1
               }}>
                 <ClockIcon />
-                <Typography variant="body2">
+                <Typography variant="body2"
+                sx={{
+                  color:"cyan",
+                  fontWeight:'bold'
+                }}
+                >
                   {currentTime.toLocaleTimeString()}
                 </Typography>
               </Box>
@@ -92,7 +97,7 @@ const Footer: React.FC = () => {
                 }
               }}>
                 <IconButton
-                  href="https://github.com/@EVODENUBY"
+                  href="https://github.com/EVODENUBY"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{ color: 'white' }}
@@ -153,8 +158,11 @@ const Footer: React.FC = () => {
                   color: 'white', 
                   textDecoration: 'none',
                   transition: 'all 0.2s',
+                  
                   '&:hover': {
                     textDecoration: 'none',
+                     color:"cyan",
+                    fontWeight: 'bold',
                     transform: 'scale(1.05)',
                     textShadow: '0 0 8px rgba(255,255,255,0.5)'
                   }
@@ -163,7 +171,24 @@ const Footer: React.FC = () => {
               evodenuby@gmail.com
                 </Link>
                 
-                 +250 791 3308
+                 <Link
+                 rel="stylesheet" href="tel:+250791783308"  target="_blank"
+                sx={{ 
+                  color: 'white', 
+                  textDecoration: 'none',
+                  transition: 'all 0.2s',
+                  paddingLeft:'10px',
+                  '&:hover': {
+                    textDecoration: 'none',
+                    transform: 'scale(1.05)',
+                    textShadow: '0 0 8px rgba(255,255,255,0.5)',
+                    color:"cyan",
+                    fontWeight: 'bold'
+                  }
+                }}
+                 >
+                  +250 791 783 308
+                </Link>
               </Typography>
               <Link
                 href="https://evodenuby.vercel.app"

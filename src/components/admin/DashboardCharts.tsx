@@ -93,7 +93,7 @@ const MOCK_ADMIN_COMPLAINTS = [
     title: ' Transport problems',
     description: 'Shortage of Buses for passengers become a serious problem and\
      barrier to peaple from HUYE-KIGALI',
-    category: 'infrastructure',
+    category: 'Infrastructure',
     priority: 'Medium',
     location: 'Kigali, Rwanda',
     contactInfo: '+250 722 787 902',
@@ -109,7 +109,7 @@ const MOCK_ADMIN_COMPLAINTS = [
     userEmail: 'Jonathan@gmail.com',
     title: ' LOW LIVING ALLOWANCES TO UNIVERSITY STUNTS',
     description: 'Student Bursary is very low!!, Could you please increase it?',
-    category: 'EDUCATION',
+    category: 'Education',
     priority: 'Medium',
     location: 'HUYE, Rwanda',
     contactInfo: '+250 734 089 002',
@@ -142,7 +142,7 @@ const MOCK_ADMIN_COMPLAINTS = [
     userEmail: 'Denyse@gmail.com',
     title: ' ASKING ROAD PROVISION',
     description: 'We need good feeder roads to connect Kayonza to the rest of the country!!',
-    category: 'infrastructure',
+    category: 'Infrastructure',
     priority: 'Medium',
     location: 'Kayonza, Rwanda',
     contactInfo: '+250 777 000 002',
@@ -187,13 +187,14 @@ const MOCK_ADMIN_COMPLAINTS = [
 
 const DashboardCharts: React.FC = () => {
   const { getAllComplaints } = useComplaints();
+
   // TEST DATA (TO BE UPDATED WITH REAL DATA)
   const allComplaints = React.useMemo(
     () => [...MOCK_ADMIN_COMPLAINTS, ...getAllComplaints()],
     [getAllComplaints]
   );
 
-  // Prepare data for category chart
+  // PREPARE DATA FOR CATEGORY CHART
   const categoryData = React.useMemo(() => {
     const categories = allComplaints.reduce((acc, complaint) => {
       acc[complaint.category] = (acc[complaint.category] || 0) + 1;
@@ -206,7 +207,7 @@ const DashboardCharts: React.FC = () => {
     }));
   }, [allComplaints]);
 
-  // Prepare data for status chart
+  // PREPARE DATA FOR STATUS CHART
   const statusData = React.useMemo(() => {
     const statuses = ['Pending', 'In Progress', 'Resolved'];
     return statuses.map(status => ({
